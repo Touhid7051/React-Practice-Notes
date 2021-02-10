@@ -1,20 +1,49 @@
 import React, {Component} from 'react';
 import "./App.css";
+import Books from "./Books/Books"
 
 
 
 
 class App extends Component{
   
+  state={
+    books:[
+      {name:'Python',
+       price:300,
+       id:1
+       },
+      {
+        name:'React',
+        price:700,
+        id:2
+      },
+      {
+        name:'Aj Himur Biye',
+        price:866,
+        id:3
+      },
+      {
+        name:'Redux',
+        price:866,
+        id:4
+      },
+      
+    ]
+  }
   
+  deleteHandler=(id)=>{
+    let newBooks= this.state.books.filter(book=>book.id!= id)
+    this.setState({
+      books:newBooks
+    })
+  }
   
   render(){
-    let obj={
-      backgroundColor:'skyblue',
-    }
+    
     return (
       <div className='App'>
-        <h1 style={{obj}}>Hello Program</h1>
+        <Books deleteHandler={this.deleteHandler.bind(this)} books={this.state.books}/>
       </div>
     );
   }
